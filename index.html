@@ -8,10 +8,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11" />
 <meta http-equiv="Pragma" content="no-cache">
 
-<link rel="stylesheet" href="css/consolas.css">
-<link rel="stylesheet" href="css/open-sans.css">
-<link rel="stylesheet" href="css/main.css">
-
 
 <script src="js/codemirror.min.js"></script>
 <script src="js/esprima.min.js"></script>
@@ -29,14 +25,12 @@
 <script src="js/Terrain2D.js"></script>
 <script src="js/gamepad.js"></script>
 
-</head><body>
+</head>
+<body>
 <canvas id="canvas"></canvas>
-<img style="position: absolute; top: 0; right: 0; border: 0;" src="textures/ribbon.png"></a>
-<a id="ribbon" href="https://github.com/lo-th/Liquid.lab"></a>
 <script>
 
 var startTest = 'Moto';
-var startFolder = 'tests_new';
 
 var canvas = document.getElementById( 'canvas' );
 canvas.oncontextmenu = function(e){ e.preventDefault(); };
@@ -59,18 +53,11 @@ menu.appendChild( subtitle );
 var editor = new CodeEditor(testSwitch);
 
 // test list
-var newlist = ['Planet', 'Moto', 'Segway', 'Break', 'Truck', 'Pinball'];
-var liquidlist = ['DamBreak','Drawing','Elastic','Impulse','LiquidTimer','Particles','RigidParticles','Soup', 'SoupStirrer','Sparky','SurfaceTension','WaveMachine'];
-var baselist = ['AddPair', 'AntiPointy', 'ApplyForce', 'BodyTypes', 'Breakable', 'Bridge', 'Bullet', 'Cantilever', 'Car', 'Chain', 'CharacterCollision', 'CollisionFiltering', 'CompoundShapes', 'Confined', 'ConvexHull', 'ConveyorBelt', 'CornerCase', 'Dominos',  'DumpShell', 'EdgeShape', 'EdgeTest',  'Faucet', 'Gears', 'Hw', 'Maxwell', 'Mobile', 'MobileBalanced', 'MotorJoint',  'Pinball', 'Pointy', 'Prismatic', 'Pulley', 'Pyramid', 'Ramp', 'Revolute',  'Rope', 'RopeJoint', 'SensorTest', 'ShapeEditing', 'SliderCrank', 'SphereStack',  'TheoJansen', 'Tiles', 'Tumbler', 'VaryingFriction', 'VaryingRestitution', 'VerticalStack',  'Web',
-];
 
+var newlist = ['Moto'];
 var demoList = new UIL.List({target:menu, callback:loadNew, name:' ', color:'no', w:100, list:newlist, pos:{left:'10px', top:'10px'}, simple:true, full:true, value:'ADVANCED' });
-var liquidList = new UIL.List({target:menu, callback:loadLiquid, name:' ', color:'no', w:110, list:liquidlist, pos:{left:'120px', top:'10px'}, simple:true, full:true, value:'LIQUID' });
-var basicList = new UIL.List({target:menu, callback:loadBase, name:' ', color:'no', w:130, list:baselist, pos:{left:'240px', top:'10px'}, simple:true, full:true, value:'BASIC' });
 
-function loadBase(name){startTest=name; startFolder = 'tests_base'; editor.load('tests_base/test_'+name+'.js'); basicList.text('BASIC'); }
 function loadNew(name){startTest=name; startFolder = 'tests_new';  editor.load('tests_new/test_'+name+'.js'); demoList.text('ADVANCED'); }
-function loadLiquid(name){startTest=name; startFolder = 'tests_liquid';  editor.load('tests_liquid/test_'+name+'.js'); liquidList.text('LIQUID'); }
 
 // middle drag view
 var dragView = false;
@@ -80,9 +67,6 @@ separator.innerHTML = '|||'
 separator.style.left = Math.floor(window.innerWidth/3) + 'px';
 document.body.appendChild( separator );
 separator.onmousedown = function(e){ dragView = true; }
-
-
-
 
 
 // shouldnt be a global :(
